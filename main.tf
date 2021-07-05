@@ -12,7 +12,10 @@ provider "tfe" {
 }
 
 data "tfe_workspace" "workspaces" {
-  
-  name         = "my-workspace-name"
-  organization = "my-org-name"
+  for_each = { for ws in var.workspaces:
+                 "${ws.organization}/${ws.workspace}" => ws
+             }
+   
+  name = each.value.workspace
+  organization = each.value.organization
 }
