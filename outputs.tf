@@ -1,8 +1,5 @@
-output "ids" {
-  for_each = tfe_variable.variable
-  
-  value = {
-    workspace_id = each.value.workspace_id
-    variable_id = each.value.id
-  }
+output "ids" {  
+  value = { for workspace, variable in tfe_variable.variable:
+              variable.workspace_id => variable.id
+          }
 }
