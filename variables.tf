@@ -3,28 +3,27 @@ variable "workspaces" {
     organization = string
     workspace = string
   }))
-  default = []
   
-  description = "(Optional) A list of workspace description: {organization = \"(Required) Name of the organization.\", name = \"(Required) Name of the workspace.\"}"
+  description = "A list of workspace description: {organization = \"Name of the organization.\", name = \"Name of the workspace.\"}"
 }
 
 variable "key" {
   type = string
   
-  description = "(Required) Name of the variable."
+  description = "Name of the variable."
 }
 
 variable "value" {
   type = string
   sensitive = true
   
-  description = "(Required) Value of the variable."
+  description = "Value of the variable."
 }
 
 variable "category" {
   type = string
   
-  description = "(Required) Whether this is a Terraform or environment variable. Valid values are <<terraform>> or <<env>>."
+  description = "Whether this is a Terraform or environment variable. Valid values are <<terraform>> or <<env>>."
   
   validation {
     condition = contains(["terraform", "env"], var.category)
@@ -34,23 +33,20 @@ variable "category" {
 
 variable "description" {
   type = string
-  default = ""
   
-  description = "(Optional) Description of the variable."
+  description = "Description of the variable."
 }
 
 variable "sensitive" {
   type = bool
-  default = false
   
-  description = "(Optional) Whether the value is sensitive. If true then the variable is written once and not visible thereafter. Defaults to false."
+  description = "Whether the value is sensitive. If true then the variable is written once and not visible thereafter. Defaults to false."
 }
 
 variable "hcl" {
   type = bool
-  default = false
   
-  description = "(Optional) Whether to evaluate the value of the variable as a string of HCL code. Has no effect for environment variables. Defaults to false."
+  description = "Whether to evaluate the value of the variable as a string of HCL code. Has no effect for environment variables. Defaults to false."
 }
 
 
