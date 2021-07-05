@@ -19,3 +19,13 @@ data "tfe_workspace" "workspaces" {
   name = each.value.workspace
   organization = each.value.organization
 }
+
+resource "tfe_variable" "variable" {
+  for_each = tfe_workspace.workspaces
+  
+  key = var.key
+  value = var.value
+  category = var.category
+  
+  workspace_id = each.value.id
+}
