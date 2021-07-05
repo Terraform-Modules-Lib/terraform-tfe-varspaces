@@ -21,7 +21,7 @@ data "tfe_workspace" "workspaces" {
 }
 
 resource "tfe_variable" "variable" {
-  for_each = tfe_workspace.workspaces
+  for_each = data.tfe_workspace.workspaces
   
   key = var.key
   value = var.value
