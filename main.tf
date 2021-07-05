@@ -10,3 +10,9 @@ terraform {
 provider "tfe" {
   # Configuration options
 }
+
+data "tfe_workspace" "workspaces" {
+  
+  name         = "my-workspace-name"
+  organization = "my-org-name"
+}
