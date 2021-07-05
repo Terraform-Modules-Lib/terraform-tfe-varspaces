@@ -1,0 +1,3 @@
+variable "workspaces" {
+  type = object
+}
