@@ -1,5 +1,5 @@
 variable "workspaces" {
-  type = map(object(
+  type = list(object(
     organization = string
     workspace = string
   ))
