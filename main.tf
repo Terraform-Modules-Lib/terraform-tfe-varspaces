@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-provider "tfe" {
-  # Configuration options
-}
-
 data "tfe_workspace" "workspaces" {
   for_each = { for ws in var.workspaces:
                  "${ws.organization}/${ws.workspace}" => ws
@@ -26,6 +22,9 @@ resource "tfe_variable" "variable" {
   key = var.key
   value = var.value
   category = var.category
+  description = var.description
+  sensitive = var.sensitive
+  hcl = var.hcl
   
   workspace_id = each.value.id
 }
