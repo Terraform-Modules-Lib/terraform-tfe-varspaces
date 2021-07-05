@@ -18,6 +18,11 @@ variable "value" {
 variable "category" {
   type = string
   description = "(Required) Whether this is a Terraform or environment variable. Valid values are <<terraform>> or <<env>>."
+  
+  validation {
+    condition = contains(["terraform", "env"], var.category)
+    error_message = "Valid values are <<terraform>> or <<env>>."
+  }
 }
 
 variable "description" {
